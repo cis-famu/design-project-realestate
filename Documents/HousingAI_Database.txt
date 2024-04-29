@@ -1,0 +1,63 @@
+drop database if exists HousingAI;
+
+create database HousingAI ;
+
+use HousingAI;
+
+drop table if exists Users;
+drop table if exists Agents;
+drop table if exists HouseType;
+
+create table Users (
+ 
+    UserID integer not null unique,
+    Username varchar(35),
+    User_FName varchar(35),
+    User_LName varchar(35),
+    User_EmailAddress varchar(35),
+    User_PhoneNumber  varchar(18),
+    UserLocation varchar(35),
+    AgentID integer not null unique,
+    primary key (UserID),
+    foreign key (AgentID) references Agents(AgentID)
+
+
+
+);
+
+
+create table Agents (
+ 
+    AgentID integer not null unique,
+    Agent_FName varchar(35),
+    Agent_LName varchar(35),
+    Agent_EmailAddress varchar(35),
+    Agent_PhoneNumber  varchar(18),
+    AgentLocation varchar(35),
+    HouseID integer not null unique,
+    primary key (AgentID),
+    foreign key (HouseID) references HouseType(HouseID)
+
+
+
+);
+
+create table HouseType (
+   
+    HouseID integer not null unique,
+    HouseStyle varchar(35),
+    FloorPlan varchar(35),
+    Garage varchar(35),
+    OutdoorLivingArea varchar(35),
+    HouseSecurity varchar(35),
+    Cost varchar(35),
+    Condition varchar(35),
+    Age varchar(35),
+    PropertySize varchar(35),
+    InterestRate varchar(35),
+    primary key(HouseID)
+
+
+
+
+);
